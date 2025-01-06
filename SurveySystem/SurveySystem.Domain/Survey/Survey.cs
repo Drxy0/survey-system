@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SurveySystem.Domain.Abstractions;
+using SurveySystem.Domain.Survey.Events;
 
 namespace SurveySystem.Domain.Survey;
 
@@ -20,9 +21,25 @@ public sealed class Survey : Entity
         EmailList = emailList;
         IsAnonymous = isAnonymous;
     }
-
     public string Title { get; set; }
     public List<QuestionAnwserPair> QuestionsAndAnwsers { get; set; }
     public List<string> EmailList { get; set; }
     public bool IsAnonymous { get; set; }
+
+    public static Survey Create(string title, List<QuestionAnwserPair> qa, List<string> emailList, bool isAnonymous)
+    {
+        if (emailList.Count > 50)
+        {
+            //error
+            // Result type
+            //if (booking.Status != BookingStatus.Completed)
+            //{
+            //    return Result.Failure<Review>(ReviewErrors.NotEligible);
+            //}
+            return null;
+        }
+        Survey survey = new Survey(Guid.NewGuid(), title, qa, emailList, isAnonymous);
+        survey.RaiseDomainEvent(new SurveyCreatedDomainEvent(survey.Id));
+        return survey;
+    }
 }
