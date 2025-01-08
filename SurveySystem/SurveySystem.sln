@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveySystem.Domain", "Surv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveySystem.Application", "SurveySystem.Application\SurveySystem.Application.csproj", "{FE9937A1-47E8-4E3F-AB62-0755B588BFBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveySystem.Infrastructure", "SurveySystem.Infrastructure\SurveySystem.Infrastructure.csproj", "{7CF3EE6B-21C5-4219-A222-660FFE08A091}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{FE9937A1-47E8-4E3F-AB62-0755B588BFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE9937A1-47E8-4E3F-AB62-0755B588BFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE9937A1-47E8-4E3F-AB62-0755B588BFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CF3EE6B-21C5-4219-A222-660FFE08A091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF3EE6B-21C5-4219-A222-660FFE08A091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF3EE6B-21C5-4219-A222-660FFE08A091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF3EE6B-21C5-4219-A222-660FFE08A091}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3D88A86D-D268-46AC-86EC-961F3A7491FB} = {81159DC4-8E37-478A-B040-B82A37D019AC}
 		{FE9937A1-47E8-4E3F-AB62-0755B588BFBC} = {81159DC4-8E37-478A-B040-B82A37D019AC}
+		{7CF3EE6B-21C5-4219-A222-660FFE08A091} = {81159DC4-8E37-478A-B040-B82A37D019AC}
 	EndGlobalSection
 EndGlobal

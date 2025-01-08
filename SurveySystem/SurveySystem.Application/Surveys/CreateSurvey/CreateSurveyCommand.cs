@@ -3,6 +3,6 @@
 namespace SurveySystem.Application.Surveys.CreateSurvey;
 
 public record CreateSurveyCommand(
-    Guid SurveyId,
+    Guid SurveyId
 
     ) : ICommand<Guid>;

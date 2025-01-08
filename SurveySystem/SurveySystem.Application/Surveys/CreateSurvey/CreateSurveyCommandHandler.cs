@@ -23,7 +23,7 @@ internal sealed class CreateSurveyCommandHandler : ICommandHandler<CreateSurveyC
 
     public static Create()
     {
-
+        throw new NotImplementedException();
     }
     public Task<Result<Guid>> Handle(CreateSurveyCommand command, CancellationToken cancellationToken)
     {
