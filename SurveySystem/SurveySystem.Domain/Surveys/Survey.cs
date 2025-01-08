@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SurveySystem.Domain.Abstractions;
-using SurveySystem.Domain.Survey.Events;
+using SurveySystem.Domain.Surveys.Events;
 
-namespace SurveySystem.Domain.Survey;
+namespace SurveySystem.Domain.Surveys;
 
 public sealed class Survey : Entity
 {

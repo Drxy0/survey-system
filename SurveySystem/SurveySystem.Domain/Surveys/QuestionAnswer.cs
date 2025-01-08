@@ -1,4 +1,4 @@
-﻿namespace SurveySystem.Domain.Survey;
+﻿namespace SurveySystem.Domain.Surveys;
 
 public enum QuestionAnswer
 {

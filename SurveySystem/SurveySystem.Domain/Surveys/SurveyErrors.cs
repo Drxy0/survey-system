@@ -1,5 +1,5 @@
 ﻿using SurveySystem.Domain.Abstractions;
-namespace SurveySystem.Domain.Survey;
+namespace SurveySystem.Domain.Surveys;
 
 public static class SurveyErrors
 {
