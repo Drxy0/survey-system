@@ -1,0 +1,34 @@
+.sidenav-container {
+    height: 100vh;
+  }
+
+.sidenav {
+    width: 200px;
+}
+
+mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+mat-nav-list a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+}
+  
+mat-icon {
+    margin-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+
+.content {
+    padding: 20px;
+}
+  
