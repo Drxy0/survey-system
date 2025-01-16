@@ -1,0 +1,19 @@
+.login-page-itself {
+    background-color: #161215;
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+}
+mat-form-field,
+button {
+    width: 100%;
+}
