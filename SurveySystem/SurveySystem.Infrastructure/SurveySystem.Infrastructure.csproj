@@ -24,6 +24,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+<<<<<<< HEAD
 >>>>>>> b14d977 (Update db connection string)
 =======
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
@@ -34,6 +35,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
 >>>>>>> b75042a (Rebase)
+=======
+>>>>>>> b14d977 (Update db connection string)
   </ItemGroup>
 
   <ItemGroup>
