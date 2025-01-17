@@ -1,3 +1,4 @@
+using SurveySystem.Api.Extensions;
 using SurveySystem.Application;
 using SurveySystem.Infrastructure;
 
@@ -17,6 +18,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();
