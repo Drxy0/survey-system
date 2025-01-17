@@ -20,7 +20,11 @@ internal sealed class CreateSurveyCommandHandler : ICommandHandler<CreateSurveyC
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
     }
-    
+
+    public static Create()
+    {
+        throw new NotImplementedException();
+    }
     public Task<Result<Guid>> Handle(CreateSurveyCommand command, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();

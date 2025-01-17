@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SurveySystem.Domain.Abstractions;
+﻿using SurveySystem.Domain.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace SurveySystem.Infrastructure.Repositories;
 
 // Generic repository pattern
 // Used for interacting with the db for specific entities
-internal abstract class Repository<T> where T : Entity
+internal abstract class Repository<T>
+    where T : Entity
 {
     protected readonly ApplicationDbContext DbContext; // EF Core database context
 
@@ -26,7 +27,7 @@ internal abstract class Repository<T> where T : Entity
             .FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
     }
 
-    public virtual void Add(T entity)
+    public void Add(T entity)
     {
         // Marks the entity as "Added" in the DbContext.
         // EF Core will insert the entity into the database during the next SaveChanges call.

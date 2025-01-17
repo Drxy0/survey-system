@@ -1,6 +1,8 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SurveySystem.Application.Users.GetUser;
+using System.Threading;
 
 namespace SurveySystem.Api.Controllers.Users;
 
@@ -16,10 +18,13 @@ public class UsersController : ControllerBase
         _sender = sender;
     }
 
-    [HttpGet("{email}")]
-    public async Task<ActionResult> GetUser(string email, CancellationToken cancellationToken)
+    [HttpGet]
+    public async Task<IActionResult> GetUser(string email, CancellationToken cancellationToken)
     {
-        var result = await _sender.Send(new GetUserQuery(email), cancellationToken);
+
+        var query = new GetUserQuery(email);
+        // sends the query to MediatR, which routes it to GetUserQueryHandler
+        var result = await _sender.Send(query, cancellationToken);
         return Ok(result.Value);
     }
 }
