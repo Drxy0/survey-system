@@ -3,4 +3,4 @@ using SurveySystem.Domain.Users;
 
 namespace SurveySystem.Application.Users.GetUser;
 
-public sealed record GetUserQuery(string Email) : IQuery<IReadOnlyList<User>>;
+public sealed record GetUserQuery(string Email) : IQuery<User>;
