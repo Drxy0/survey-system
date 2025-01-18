@@ -1,5 +1,5 @@
-﻿using SurveySystem.Domain.Abstractions;
-using MediatR;
+﻿using MediatR;
+using SurveySystem.Domain.Abstractions;
 
 namespace SurveySystem.Application.Abstractions.Messaging;
 
