@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SurveySystem.Api.Middleware;
+﻿using SurveySystem.Api.Middleware;
 using SurveySystem.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace SurveySystem.Api.Extensions;
 
@@ -8,8 +8,10 @@ public static class ApplicationBuilderExtensions
 {
     public static void ApplyMigrations(this IApplicationBuilder app)
     {
-        using IServiceScope scope = app.ApplicationServices.CreateScope();
-        using ApplicationDbContext dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        using var scope = app.ApplicationServices.CreateScope();
+
+        using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
         dbContext.Database.Migrate();
     }
 

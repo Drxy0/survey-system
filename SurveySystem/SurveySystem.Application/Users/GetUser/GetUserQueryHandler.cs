@@ -1,29 +1,44 @@
-﻿using SurveySystem.Application.Abstractions.Messaging;
+﻿using SurveySystem.Application.Abstractions.Data;
+using SurveySystem.Application.Abstractions.Messaging;
 using SurveySystem.Domain.Abstractions;
 using SurveySystem.Domain.Users;
+using Dapper;
 
 namespace SurveySystem.Application.Users.GetUser;
 
-internal sealed class GetUserQueryHandler : IQueryHandler<GetUserQuery, User>
+internal sealed class GetUserQueryHandler : IQueryHandler<GetUserQuery, IReadOnlyList<User>>
 {
-    private readonly IUserRepository _userRepository;
+    private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
-    public GetUserQueryHandler(IUserRepository userRepository)
+    public GetUserQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
     {
-        _userRepository = userRepository;
+        _sqlConnectionFactory = sqlConnectionFactory;
     }
 
-    public async Task<Result<User>> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public async Task<Result<IReadOnlyList<User>>> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        // TODO: Getting with email should only be an application layer operation, not an End-to-End one.
-        // TODO: Make it get by Id because you shouldn't pass email through the URL params (=
-        // TODO: Handle the case if a user with a given username is not found
+        using var connection = _sqlConnectionFactory.CreateConnection();
 
-        // The argument for dapper can be made here so that you don't have to pass this request to the extra level of abstraction
-        // Aka the infrastructure layer, but I am not in favour of using multiple different database methods of accessing the database
-        // If you really want it you can return the dapper implementation 
+        const string sql = """
+            SELECT
+                a.id AS Id,
+                a.name AS Name,
+                a.surname AS Surname,
+                a.password AS Password,
+                a.street_address AS StreetAddress,
+                a.city AS City,
+                a.country AS Country,
+                a.phone_number AS PhoneNumber,
+                a.email AS Email
+            FROM users AS a
+            WHERE a.email = '@Email';
+            """;
 
-        User? user = await _userRepository.GetByEmailAsync(request.Email, cancellationToken);
-        return user;
+        var users = await connection.QueryAsync<User>(
+            sql,
+            new { Email = request.Email }
+        );
+
+        return Result<IReadOnlyList<User>>.Success(users.ToList() as IReadOnlyList<User>);
     }
 }
