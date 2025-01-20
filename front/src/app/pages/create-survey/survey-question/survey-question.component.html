@@ -1,0 +1,22 @@
+<div>
+    <mat-form-field class="question-area-container">
+        <mat-label>Question {{ index() + 1 }}</mat-label>
+        <textarea
+            matInput 
+            maxlength="255" 
+            class="question-area"
+            [(ngModel)] = "question"
+            (ngModelChange)="onQuestionChange()"
+        >
+        </textarea>
+    </mat-form-field>
+    <br/>
+    @if(!isCreatingSurvey()) {
+        <mat-radio-group>
+            <mat-radio-button value="1">Yes</mat-radio-button>
+            <mat-radio-button value="2">No</mat-radio-button>
+            <mat-radio-button value="3">Can't anwser</mat-radio-button>
+        </mat-radio-group>
+    }
+
+</div>

@@ -1,0 +1,11 @@
+.question-area {
+    resize: vertical;
+    width: 28.5rem;
+    max-height: 10rem;
+    min-height: 1.5rem;
+    height: 1.5rem;
+}
+
+.question-area-container {
+    width: 30rem;
+}

@@ -1,0 +1,28 @@
+<form class="survey-form" (ngSubmit)="onCreateSurvey()">
+    <h1>Create a new survey</h1>
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput type="text" name="title" required />
+    </mat-form-field>
+    <br/>
+    <div>
+        @for(question of questions; track question.index) {
+            <app-survey-question 
+                [questionInput]="question.question"
+                [index]="question.index"
+                [isCreatingSurvey]="true"
+                (questionChange)="onQuestionChange($event)"
+            />
+        }
+    </div>
+    
+    <button mat-stroked-button (click)="onAddQuestion()">
+        <ng-icon name="matPlusOutline"/>
+    </button>
+
+    <button class="create-survey" 
+        mat-flat-button
+        type="submit">
+        Create
+    </button>
+</form>
