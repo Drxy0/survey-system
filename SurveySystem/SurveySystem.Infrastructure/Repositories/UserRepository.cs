@@ -28,8 +28,3 @@ internal sealed class UserRepository : Repository<User>, IUserRepository
     var user = new User { Id = Guid.NewGuid(), Name = "Alice" };
     userRepository.Add(user);
  */
-/*Example usage
-    var userRepository = new UserRepository(applicationDbContext);
-    var user = new User { Id = Guid.NewGuid(), Name = "Alice" };
-    userRepository.Add(user);
- */

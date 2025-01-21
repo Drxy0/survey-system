@@ -6,6 +6,7 @@ using SurveySystem.Domain.Surveys;
 using SurveySystem.Domain.Users;
 using SurveySystem.Infrastructure.Repositories;
 
+
 namespace SurveySystem.Infrastructure;
 
 public static class DependencyInjection
@@ -17,17 +18,12 @@ public static class DependencyInjection
 
         // connect to db
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseNpgsql(connectionString));
-        var connectionString = configuration.GetConnectionString("Database") ??
-            throw new ArgumentNullException(nameof(configuration));
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
         services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         });
-
-        services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseNpgsql(connectionString));
 
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<ISurveyRepository, SurveyRepository>();
