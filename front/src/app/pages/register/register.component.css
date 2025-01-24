@@ -1,0 +1,18 @@
+form {
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    width: 25rem;
+}
+
+div mat-form-field{
+    width: 100%;
+}
+
+.name-surname {
+    display: flex;
+}
+
+.name-surname > :nth-child(1) {
+    margin-right: 10px;
+}

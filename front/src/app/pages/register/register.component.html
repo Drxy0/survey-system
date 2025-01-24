@@ -1,0 +1,73 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Register</h2>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput id="email" type="email" name="email" formControlName="email">
+    <mat-error>Invalid Email address</mat-error>
+  </mat-form-field>
+
+  <div formGroupName="passwords">
+    <mat-form-field>
+      <mat-label for="password">Password</mat-label>
+      <input 
+        matInput
+        id="password"
+        type="password"
+        name="password"
+        formControlName="password"
+      />
+      @if (form.controls.passwords.dirty && form.controls.passwords.invalid) {
+        <mat-error>Password must be at least 6 characters long</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="confirm-password">Confirm Password</mat-label>
+      <input
+        matInput
+        id="confirm-password"
+        type="password"
+        name="confirm-password"
+        formControlName="confirmPassword"
+      >
+      @if(form.get('passwords')?.hasError('valuesNotEqual')) {
+        <mat-error>
+          Passwords must match!
+        </mat-error>
+      }
+
+    </mat-form-field>
+  </div>
+
+  <br/>
+
+  <div class="name-surname">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput id="name" type="text" name="name" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Surname</mat-label>
+        <input matInput id="surname" type="text" name="surname" formControlName="surname" />
+    </mat-form-field>
+  </div>
+
+    <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput id="address" type="text" name="address" formControlName="address" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput id="city" type="text" name="city" formControlName="city" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input matInput id="country" type="text" name="country" formControlName="country" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input matInput id="phone-number" type="text" name="phone-number" formControlName="phoneNumber" />
+    </mat-form-field>
+
+  <button mat-flat-button type="submit">Submit</button>
+</form>
