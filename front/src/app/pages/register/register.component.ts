@@ -83,6 +83,7 @@ export class RegisterComponent {
   });
 
   onSubmit() {
-    console.log(this.form.controls.passwords.controls.confirmPassword);
+    console.log(this.form.controls.passwords.errors?.['valuesNotEqual']);
+    console.log(this.form.get('passwords')?.hasError('valuesNotEqual'));
   }
 }

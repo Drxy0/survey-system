@@ -8,18 +8,30 @@ public sealed class User : Entity
     public string Surname { get; private set; } = String.Empty;
     public string Password { get; private set; } = String.Empty;
     public string Address { get; private set; } = String.Empty; // No need for rich domain model
+    public string City { get; private set; } = String.Empty;
+    public string Country { get; private set; } = String.Empty;
     public string PhoneNumber { get; private set; } = String.Empty;
     public string Email { get; private set; } = String.Empty;
 
-    private User(Guid id, string name, string surname, string password, string address, string phoneNumber,
-        string email) : base(id)
+    private User(
+        Guid id,
+        string name,
+        string surname,
+        string email,
+        string password,
+        string phoneNumber,
+        string address,
+        string city,
+        string country) : base(id)
     {
         Name = name;
         Surname = surname;
-        Password = password;
-        Address = address;
-        PhoneNumber = phoneNumber;
         Email = email;
+        Password = password;
+        PhoneNumber = phoneNumber;
+        Address = address;
+        City = city;
+        Country = country;
     }
 
     private User()
@@ -27,10 +39,24 @@ public sealed class User : Entity
         // Not meant to be instantiated; Used for EntityFramework.
     }
 
-    public static User Create(string name, string surname, string password, string address, string phoneNumber,
-        string email)
+    public static User Create(string name,
+                              string surname,
+                              string email,
+                              string password,
+                              string phoneNumber,
+                              string address,
+                              string city,
+                              string country)
     {
-        var user = new User(Guid.NewGuid(), name, surname, password, address, phoneNumber, email);
+        var user = new User(Guid.NewGuid(),
+                            name,
+                            surname,
+                            email,
+                            password,
+                            phoneNumber,
+                            address,
+                            city,
+                            country);
         return user;
     }
 }

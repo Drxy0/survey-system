@@ -20,11 +20,6 @@ public static class DependencyInjection
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-        services.AddDbContext<ApplicationDbContext>(options =>
-        {
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-        });
-
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<ISurveyRepository, SurveyRepository>();
         services.AddTransient<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
