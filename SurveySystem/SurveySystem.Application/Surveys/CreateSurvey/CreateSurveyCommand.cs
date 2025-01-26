@@ -1,8 +1,10 @@
 ﻿using SurveySystem.Application.Abstractions.Messaging;
+using SurveySystem.Domain.Surveys;
 
 namespace SurveySystem.Application.Surveys.CreateSurvey;
 
 public record CreateSurveyCommand(
-    Guid SurveyId
-
-    ) : ICommand<Guid>;
+    string Title,
+    List<QuestionAnwserPair> Qa,
+    List<string> EmailList,
+    bool IsAnonymous) : ICommand<Guid>;

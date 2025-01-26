@@ -1,7 +1,7 @@
 ﻿namespace SurveySystem.Domain.Users;
 
 // Repository pattern,
-// Used by the Infrastructure layer and for communicating with the db
+// Implemented in the Infrastructure layer
 // Here we define methods specific to the user entity
 public interface IUserRepository
 {

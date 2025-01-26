@@ -23,7 +23,11 @@ internal sealed class GetUserQueryHandler : IQueryHandler<GetUserQuery, User>
         // Aka the infrastructure layer, but I am not in favour of using multiple different database methods of accessing the database
         // If you really want it you can return the dapper implementation 
 
-        User? user = await _userRepository.GetByEmailAsync(request.Email, cancellationToken);
+        User? user = await _userRepository.GetByIdAsync(request.Id, cancellationToken);
+        if (user is null)
+        {
+            return Result.Failure<User>(UserErrors.NotFound);
+        }
         return user;
     }
 }
