@@ -10,4 +10,8 @@ public static class SurveyErrors
     public static Error TooManyEmails = new(
     "Survey.TooManyEmails",
     "More than 50 email addresses were provided");
+
+    public static Error Overlap = new(
+    "Survey.Overlap",
+    "Simultanious access error");
 }

@@ -10,6 +10,7 @@ namespace SurveySystem.Domain.Surveys;
 
 public sealed class Survey : Entity
 {
+    private Survey() { } // EF Core requires this for materialization
     private Survey(Guid id,
                    string title,
                    List<QuestionAnwserPair> qa,
@@ -26,12 +27,9 @@ public sealed class Survey : Entity
     public List<string> EmailList { get; set; }
     public bool IsAnonymous { get; set; }
 
-    public static Result<Survey> Create(string title, List<QuestionAnwserPair> qa, List<string> emailList, bool isAnonymous)
+    public static Survey Create(string title, List<QuestionAnwserPair> qa, List<string> emailList, bool isAnonymous)
     {
-        if (emailList.Count > 50)
-        {
-            return Result.Failure<Survey>(SurveyErrors.TooManyEmails);
-        }
+
         Survey survey = new Survey(Guid.NewGuid(), title, qa, emailList, isAnonymous);
         survey.RaiseDomainEvent(new SurveyCreatedDomainEvent(survey.Id));
         return survey;

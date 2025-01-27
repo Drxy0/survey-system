@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SurveySystem.Application.Surveys.CreateSurvey;
 using SurveySystem.Application.Surveys.GetSurvey;
+using SurveySystem.Domain.Surveys;
+using SurveySystem.Application.Surveys.UpdateSurvey;
 using System;
 
 namespace SurveySystem.Api.Controllers.Surveys;
@@ -38,14 +40,15 @@ public class SurveysController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult> GetSurvey(Guid id, CancellationToken cancellationToken)
     {
-        var result = await _sender.Send(new GetSurveyQuery(id), cancellationToken]);
+        var result = await _sender.Send(new GetSurveyQuery(id), cancellationToken);
         return Ok(result.Value);
     }
+
     // update survey (anwser the questions)
     [HttpPut("{id:Guid}")]
-    public async Task<ActionResult> UpdateSurvey(Guid id, [FromBody] UpdateSurveyCommand answers, CancellationToken cancellationToken)
+    public async Task<ActionResult> UpdateSurvey(Guid id, [FromBody] List<QuestionAnwserPair> answers, CancellationToken cancellationToken)
     {
-        var result = await _sender.Send(new UpdateSurveyCommand(answers.X, answers.Y), cancellationToken]);
+        var result = await _sender.Send(new UpdateSurveyCommand(id, answers), cancellationToken);
         // if the result if it's failure or not...
         return Ok(result.Value);
     }
