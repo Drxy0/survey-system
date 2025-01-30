@@ -55,7 +55,7 @@ public class UsersController : ControllerBase
     //    return Ok(result.Value);
     //}
 
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<ActionResult> CreateUser(CreateUserRequest request, CancellationToken cancellationToken)
     {
         var command = new CreateUserCommand(

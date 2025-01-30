@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { matPlusOutline } from '@ng-icons/material-icons/outline';
+import { matPlusOutline, matMinusOutline } from '@ng-icons/material-icons/outline';
 import { SurveyQuestionComponent } from './survey-question/survey-question.component';
 
 interface Question {
@@ -25,7 +25,7 @@ interface Question {
   ],
   templateUrl: './create-survey.component.html',
   styleUrls: ['./create-survey.component.css'],
-  viewProviders: [provideIcons({ matPlusOutline })]
+  viewProviders: [provideIcons({ matPlusOutline, matMinusOutline })]
 })
 export class CreateSurveyComponent implements OnInit {
   questions: Question[] = [];
@@ -55,6 +55,12 @@ export class CreateSurveyComponent implements OnInit {
     const newIndex = this.questions.length;
     this.questions.push({ index: newIndex, question: '' });
     this.saveQuestionToLocalStorage(newIndex, ''); // Save the new empty question
+  }
+
+  onDeleteQuestion() {
+    if (this.questions.length === 1) return
+    this.questions.pop();
+    localStorage.removeItem(`question_${this.questions.length}`)
   }
 
   onQuestionChange(event: { question: string; index: number }) {

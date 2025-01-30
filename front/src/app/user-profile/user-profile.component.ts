@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, input, Output } from '@angular/core';
-
+import { Component, EventEmitter, Input, input, OnInit, Output } from '@angular/core';
+import { User } from './user.model';
 @Component({
   selector: 'app-user-profile',
   standalone: true,
@@ -7,26 +7,17 @@ import { Component, EventEmitter, Input, input, Output } from '@angular/core';
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
-export class UserProfileComponent {
-  // Takes data from outside, set in app.html
-  //@Input({required: true}) idk!: string;
-  // Same thing, but uses signals instead of decorators
-  idk = input.required<string>();
-  
-  @Output() select = new EventEmitter();
+export class UserProfileComponent implements OnInit {
+  user: User = {
+    Name: "John",
+    Surname: "Doe",
+    Address: "123 Main St",
+    City: "New York",
+    Country: "USA",
+    PhoneNumber: "+1 555-1234"
+};
 
-  onSelectUser() {
-    this.select.emit();
-  }
-
-  // a public property that can be used in the html
-  selectedUser = {
-    id: 'u1',
-    name: 'John',
-  }
-  
-  // getter
-  get idGetter() {
-    return this.selectedUser.id;
+  ngOnInit(): void {
+    // get current user from server
   }
 }

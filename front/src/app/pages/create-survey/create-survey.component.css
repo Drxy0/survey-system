@@ -6,6 +6,12 @@
     margin-top: 1rem;
 }
 
+.command-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 
 .survey-form button {
     max-width: 60px;

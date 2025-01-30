@@ -1,0 +1,23 @@
+
+.profile-header {
+    display: flex;
+    direction: row;
+    margin-top: 2rem;
+}
+
+.user-avatar {
+    border-radius: 50%;
+    background-color: grey;
+    width: 8rem;
+    height: 8rem;
+}
+
+.name-surname {
+    font-size: 2rem;
+    align-content: center;
+    padding-left: 4rem;
+}
+
+.user-data {
+    padding-left: 1rem;
+}

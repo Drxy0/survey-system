@@ -1,4 +1,13 @@
-<div>
-    <p [innerText]="idGetter"></p>
-    {{ selectedUser.name }}
+<div class="profile-header">
+    <div class="user-avatar">
+    </div>
+    <div class="name-surname">
+        Name Surname
+    </div>
+</div>
+<div class="user-data">
+    <p>{{user.Address}}</p>
+    <p>{{user.City}}, {{user.Country}}</p>
+    <p>{{user.PhoneNumber}}</p>
+
 </div>

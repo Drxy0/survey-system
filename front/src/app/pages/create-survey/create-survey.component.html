@@ -16,9 +16,16 @@
         }
     </div>
     
-    <button mat-stroked-button (click)="onAddQuestion()">
-        <ng-icon name="matPlusOutline"/>
-    </button>
+    <div class="command-buttons">
+        <button class="add-button" mat-stroked-button (click)="onAddQuestion()">
+            <ng-icon name="matPlusOutline"/>
+        </button>
+    
+        <button class="delete-button" mat-stroked-button (click)="onDeleteQuestion()">
+            <ng-icon name="matMinusOutline"/>
+        </button>
+    </div>
+
 
     <button class="create-survey" 
         mat-flat-button

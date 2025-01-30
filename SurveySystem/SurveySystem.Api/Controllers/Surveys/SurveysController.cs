@@ -33,7 +33,6 @@ public class SurveysController : ControllerBase
         }
 
         return Ok(result.Value);
-
     }
 
     // get survey by id
