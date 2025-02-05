@@ -3,18 +3,14 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
-  FormGroupDirective,
   FormsModule,
-  NgForm,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ErrorStateMatcher } from '@angular/material/core';
 
 function equalValues(inName1: string, inName2: string) {
   return (control: AbstractControl) => {
